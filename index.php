@@ -1,16 +1,20 @@
+<?php
+
+include('./includes/functions.php');
+
+
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf8">
     <title>Morgan Dawkins - Freelance Photograph - Home</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display&display=swap" rel="stylesheet">
+    <?php include('./includes/head.php'); ?>
 </head>
 <body id="home">
     <header>
-        <a href="index.html">
-            <img src="css/logo.png" alt="Morgan Dawkins - Freelance Photograph">
-        </a>
+        <?php include('./includes/header.php'); ?>
     </header>
     <main>
         <div id="hero">
@@ -37,47 +41,33 @@
                 </div><!-- end first column -->
                 <div class="column">
                     <p class="content-head pictures">
-                        <a class="btn" href="gallery.html" title="See all pictures">
+                        <a class="btn" href="gallery.php" title="See all pictures">
                             See all shots
                         </a>
                     </p>
                     <div id="pictures">
-                        <a href="detail.html" title="Picture 1">
-                            <img src="css/small.jpg" alt="Picture 1">
-                        </a>
-                        <a href="detail.html" title="Picture 2">
-                            <img src="css/small.jpg" alt="Picture 2">
-                        </a>
-                        <a href="detail.html" title="Picture 3">
-                            <img src="css/small.jpg" alt="Picture 3">
-                        </a>
-                        <a href="detail.html" title="Picture 4">
-                            <img src="css/small.jpg" alt="Picture 4">
-                        </a>
+                        <?php
+                            $galleries = findLatest(4);
+                            foreach ($galleries as $picture) {
+                                ?>
+                                    <a href="detail.php?id=<?= $picture['id'] ?>" title="<?= $picture['title'] ?>">
+                                        <img src="images/small/<?= $picture['slug'] ?>.jpg" alt="<?= $picture['title'] ?>">
+                                    </a>
+                                <?php
+                            }
+                        ?>
                     </div>
                 </div><!-- end second column -->
             </div><!-- end row -->
             <p id="home-contact">
-                <a class="button" href="contact.html" title="Formulaire de contact">
+                <a class="button" href="contact.php" title="Formulaire de contact">
                     Contact me
                 </a>
             </p>
         </div>
     </main>
     <footer>
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="index.html" title="Photograph">Home</a>
-                </li>
-                <li>
-                    <a href="gallery.html" title="My shots">Gallery</a>
-                </li>
-                <li>
-                    <a href="contact.html" title="Contact form">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <?php include('./includes/footer.php'); ?>
     </footer>
 </body>
 </html>

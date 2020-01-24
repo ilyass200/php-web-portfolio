@@ -3,14 +3,11 @@
 <head>
     <meta charset="utf8">
     <title>Morgan Dawkins - Freelance Photograph - Contact</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display&display=swap" rel="stylesheet">
+    <?php include('./includes/head.php'); ?>
 </head>
 <body id="contact">
     <header>
-        <a href="index.html">
-            <img src="css/logo.png" alt="Morgan Dawkins - Freelance Photograph">
-        </a>
+        <?php include('./includes/header.php'); ?>
     </header>
     <main>
         <div id="hero">
@@ -36,7 +33,7 @@
                     </p>
                 </div><!-- end first column -->
                 <div class="column">
-                    <form action="contact.html">
+                    <form method="POST">
                         <p class="error">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your full name">
@@ -53,29 +50,45 @@
                             <span>Please enter your message</span>
                         </p>
                         <p>
-                            <button type="submit" class="button">
+                            <button type="submit" name="submit" class="button">
                                 Send
                             </button>
                         </p>
                     </form>
+
+                    <?php
+
+                    if (isset($_POST['submit'])) {
+
+
+                    if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['email']) && !empty($_POST['email']) && isset( $_POST['message']) && !empty($_POST['message'])) {
+                        
+                            if (filter_var($_POST['email'],FILTER_VALIDATE_EMAIL )) {
+                                $user = rtrim(implode(':', $_POST), ':');
+                                $file = fopen("./data/users.txt","a");
+                                fwrite($file,$user.PHP_EOL);
+                                fclose($file);
+                            }
+                            else
+                            {
+                                echo "<p style='color:#FA5858;'>Oops, email invalide !</p>";
+                            }
+                        }
+                        else
+                        {
+                            echo  "<p style='color: #FA5858;'>veuillez remplir tous les champs</p>";
+                        }
+
+                    }
+
+                    ?>
+
                 </div><!-- end second column -->
             </div><!-- end row -->
         </div>
     </main>
     <footer>
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="index.html" title="Photograph">Home</a>
-                </li>
-                <li>
-                    <a href="gallery.html" title="My shots">Gallery</a>
-                </li>
-                <li>
-                    <a href="contact.html" title="Contact form">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <?php include('./includes/footer.php'); ?>
     </footer>
 </body>
 </html>

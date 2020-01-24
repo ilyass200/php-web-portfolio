@@ -75,7 +75,7 @@ return [
     [
         'id'          => 10,
         'slug'        => 'provident-quam-blanditiis-architecto',
-        'title'       => 'Provident quam blanditiis architecto',
+        'title'       => 'Provident quam blanditiis',
         'date'        => '2018-08-07',
         'location'    => 'North Georgette, Burkina Faso',
         'description' => 'Culpa tenetur quam voluptates nemo. Quia cupiditate consequatur sit et quam doloremque distinctio. Ut atque tenetur fugiat voluptatibus nesciunt sint maiores. Nam officia maiores odio rerum porro aut.',
@@ -99,7 +99,7 @@ return [
     [
         'id'          => 13,
         'slug'        => 'officia-debitis-necessitatibus-ducimus',
-        'title'       => 'Officia debitis necessitatibus ducimus',
+        'title'       => 'Officia debitis necessitatibus',
         'date'        => '2018-04-05',
         'location'    => 'New Julianton, Pakistan',
         'description' => 'Magnam dignissimos qui veniam et. Quia qui est velit suscipit dolor rerum. Saepe nemo optio quia iste dolorem necessitatibus.',
